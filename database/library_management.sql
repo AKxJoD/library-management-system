@@ -1,0 +1,63 @@
+CREATE DATABASE IF NOT EXISTS library_management CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+USE library_management;
+
+CREATE TABLE users (
+ id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+ name VARCHAR(100) NOT NULL,
+ email VARCHAR(150) NOT NULL UNIQUE,
+ password VARCHAR(255) NOT NULL,
+ created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE categories (
+ id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+ name VARCHAR(100) NOT NULL UNIQUE
+);
+
+CREATE TABLE books (
+ id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+ title VARCHAR(200) NOT NULL,
+ author VARCHAR(150) NOT NULL,
+ isbn VARCHAR(30) NOT NULL UNIQUE,
+ category_id INT UNSIGNED NULL,
+ quantity INT UNSIGNED NOT NULL DEFAULT 1,
+ available_quantity INT UNSIGNED NOT NULL DEFAULT 1,
+ created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+ FOREIGN KEY (category_id) REFERENCES categories(id) ON DELETE SET NULL
+);
+
+CREATE TABLE members (
+ id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+ member_code VARCHAR(30) NOT NULL UNIQUE,
+ name VARCHAR(120) NOT NULL,
+ email VARCHAR(150) NOT NULL UNIQUE,
+ phone VARCHAR(30),
+ address VARCHAR(255),
+ created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE transactions (
+ id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+ book_id INT UNSIGNED NOT NULL,
+ member_id INT UNSIGNED NOT NULL,
+ issued_at DATE NOT NULL,
+ due_date DATE NOT NULL,
+ returned_at DATE NULL,
+ fine DECIMAL(10,2) NOT NULL DEFAULT 0,
+ status ENUM('issued','returned') NOT NULL DEFAULT 'issued',
+ FOREIGN KEY (book_id) REFERENCES books(id) ON DELETE RESTRICT,
+ FOREIGN KEY (member_id) REFERENCES members(id) ON DELETE RESTRICT
+);
+
+INSERT INTO users (name,email,password) VALUES ('Administrator','admin@library.com','$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llCjKQ4K4f3zQWZf8l3y2');
+INSERT INTO categories (name) VALUES ('Programming'),('Database'),('Networking'),('Management');
+INSERT INTO books (title,author,isbn,category_id,quantity,available_quantity) VALUES
+('Clean Code','Robert C. Martin','9780132350884',1,5,5),
+('The Pragmatic Programmer','Andrew Hunt','9780135957059',1,4,4),
+('Computer Networks','Andrew S. Tanenbaum','9780132126953',3,3,3),
+('Database System Concepts','Abraham Silberschatz','9780073523323',2,4,4),
+('Software Project Management','Bob Hughes','9780071074255',4,2,2);
+INSERT INTO members (member_code,name,email,phone,address) VALUES
+('MEM-1001','Rahul Sharma','rahul@example.com','9876543210','Delhi'),
+('MEM-1002','Priya Verma','priya@example.com','9876501234','Delhi'),
+('MEM-1003','Aman Gupta','aman@example.com','9812345678','Delhi');
