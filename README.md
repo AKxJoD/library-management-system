@@ -1,24 +1,37 @@
 # Library Management System
 
-Full-stack PHP + MySQL Library Management System.
+A full-stack **GitHub Pages + Supabase** Library Management System. The frontend is static and runs directly from GitHub Pages; authentication, database, books, members and lending records run in Supabase.
 
-### Features
-- Admin login/session authentication
+## Live architecture
+- Frontend: HTML, CSS and JavaScript
+- Hosting: GitHub Pages
+- Authentication: Supabase Auth
+- Database: Supabase PostgreSQL
+- API: Supabase REST API
+
+## Features
+- Account registration and login
 - Dashboard statistics
-- Book and member CRUD
-- Issue/return workflow
-- Due dates and automatic fines
+- Cloud database for books and members
+- Add books and members
+- Issue and return books
+- 14-day loan period
+- Automatic late fine at ₹10/day
 - Transaction history
-- Search and filters
-- PDO prepared statements and password hashing
-- Responsive UI
+- Responsive interface
+- Persistent data from any device after login
 
-### XAMPP setup
-1. Copy to `xampp/htdocs/library-management-system`.
-2. Start Apache and MySQL.
-3. Import `database/library_management.sql` in phpMyAdmin.
-4. Verify `config/database.php`.
-5. Open `http://localhost/library-management-system/`.
-6. Login with `admin@library.com` / `admin123`.
+## Run from GitHub
+1. Open the repository Settings → Pages.
+2. Choose **Deploy from a branch**.
+3. Select `main` and `/ (root)`.
+4. Save and wait for GitHub Pages to publish.
+5. Open `https://akxjod.github.io/library-management-system/`.
 
-GitHub Pages does not execute PHP/MySQL. Use XAMPP or PHP-compatible hosting.
+The app no longer depends on PHP or XAMPP for the GitHub-hosted version.
+
+## Database
+The production Supabase project contains the `books`, `members`, `loans` and `profiles` tables with Row Level Security enabled. The SQL backup remains in `database/library_management.sql`.
+
+## Important
+The Supabase publishable key is designed for browser use. Never put a Supabase service-role/secret key in this repository.
