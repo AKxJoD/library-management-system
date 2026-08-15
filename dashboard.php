@@ -1,0 +1,9 @@
+<?php
+$page_title='Dashboard'; require __DIR__.'/includes/header.php';
+$books=(int)$pdo->query('SELECT COUNT(*) FROM books')->fetchColumn();
+$available=(int)$pdo->query('SELECT COALESCE(SUM(available_quantity),0) FROM books')->fetchColumn();
+$members=(int)$pdo->query('SELECT COUNT(*) FROM members')->fetchColumn();
+$issued=(int)$pdo->query("SELECT COUNT(*) FROM transactions WHERE status='issued'")->fetchColumn();
+$overdue=(int)$pdo->query("SELECT COUNT(*) FROM transactions WHERE status='issued' AND due_date<CURDATE()")->fetchColumn();
+$recent=$pdo->query("SELECT t.*,b.title,m.name FROM transactions t JOIN books b ON b.id=t.book_id JOIN members m ON m.id=t.member_id ORDER BY t.id DESC LIMIT 8")->fetchAll();
+?><section class="cards"><div class="stat"><span>Total Titles</span><b><?=$books?></b></div><div class="stat"><span>Available Copies</span><b><?=$available?></b></div><div class="stat"><span>Members</span><b><?=$members?></b></div><div class="stat"><span>Currently Issued</span><b><?=$issued?></b></div><div class="stat warning"><span>Overdue</span><b><?=$overdue?></b></div></section><section class="panel"><div class="panel-head"><h2>Recent Transactions</h2><a class="btn primary" href="transactions.php">Manage</a></div><div class="table-wrap"><table><thead><tr><th>Book</th><th>Member</th><th>Issued</th><th>Due</th><th>Status</th></tr></thead><tbody><?php foreach($recent as $r): ?><tr><td><?=e($r['title'])?></td><td><?=e($r['name'])?></td><td><?=e($r['issued_at'])?></td><td><?=e($r['due_date'])?></td><td><span class="badge <?=$r['status']?>"><?=ucfirst($r['status'])?></span></td></tr><?php endforeach; if(!$recent): ?><tr><td colspan="5" class="empty">No transactions yet.</td></tr><?php endif; ?></tbody></table></div></section><?php require __DIR__.'/includes/footer.php'; ?>
