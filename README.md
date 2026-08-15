@@ -1,43 +1,29 @@
 # Library Management System
 
-A full-stack Library Management System built with **PHP, MySQL, HTML, CSS and JavaScript**.
+Full-stack Library Management System using PHP, MySQL, HTML, CSS and JavaScript.
 
 ## Features
-- Admin login and session authentication
-- Dashboard with live statistics
-- Add, edit and delete books
-- Add, edit and delete members
-- Issue and return books
-- Automatic due dates and fine calculation
+- Admin authentication
+- Dashboard statistics
+- Book CRUD
+- Member CRUD
+- Issue and return workflow
+- Due dates and automatic fine calculation
 - Transaction history
-- Search and status filters
-- MySQL relational database
-- Prepared statements and password hashing
-- Responsive admin interface
+- Search and filters
+- PDO prepared statements
+- Password hashing
+- Responsive UI
 
 ## Requirements
-- XAMPP (Apache + MySQL)
-- PHP 8.0+
-- MySQL 5.7+ / MariaDB
+XAMPP (Apache + MySQL), PHP 8+, MySQL 5.7+/MariaDB.
 
-## Setup
-1. Copy the project into `xampp/htdocs/library-management-system`.
-2. Start Apache and MySQL from XAMPP.
-3. Open phpMyAdmin and import `database/library_management.sql`.
-4. Check database settings in `config/database.php`.
+## Run with XAMPP
+1. Put this folder in `xampp/htdocs/library-management-system`.
+2. Start Apache and MySQL.
+3. Import `database/library_management.sql` in phpMyAdmin.
+4. Check `config/database.php`.
 5. Open `http://localhost/library-management-system/`.
-6. Default admin login: `admin@library.com` / `admin123`.
+6. Login with `admin@library.com` / `admin123`.
 
-## Structure
-- `index.php` - login and dashboard entry
-- `books.php` - book CRUD
-- `members.php` - member CRUD
-- `transactions.php` - issue, return and history
-- `config/database.php` - PDO database connection
-- `includes/auth.php` - authentication helpers
-- `includes/header.php` / `footer.php` - shared layout
-- `assets/style.css` - responsive styling
-- `assets/app.js` - client-side interactions
-- `database/library_management.sql` - schema and seed data
-
-> GitHub Pages cannot run PHP/MySQL. Use XAMPP locally or PHP-compatible hosting for the backend.
+GitHub Pages cannot run PHP/MySQL. Use XAMPP locally or PHP-compatible hosting for the full application.
