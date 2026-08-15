@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Library Management System</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="header">
+    <div>
+      <h1>Library Management System</h1>
+      <p>Manage books, members and lending records in one place.</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="stats">
+      <div class="stat-card"><span>Total Books</span><strong id="totalBooks">0</strong></div>
+      <div class="stat-card"><span>Available</span><strong id="availableBooks">0</strong></div>
+      <div class="stat-card"><span>Issued</span><strong id="issuedBooks">0</strong></div>
+      <div class="stat-card"><span>Members</span><strong id="totalMembers">0</strong></div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-header">
+        <h2>Book Management</h2>
+        <button class="primary" id="addBookBtn">+ Add Book</button>
+      </div>
+      <div class="toolbar">
+        <input id="searchInput" type="search" placeholder="Search by title, author or ISBN...">
+        <select id="statusFilter">
+          <option value="all">All Status</option>
+          <option value="available">Available</option>
+          <option value="issued">Issued</option>
+        </select>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Title</th><th>Author</th><th>ISBN</th><th>Status</th><th>Action</th></tr></thead>
+          <tbody id="bookTable"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-header">
+        <h2>Members</h2>
+        <button class="secondary" id="addMemberBtn">+ Add Member</button>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Name</th><th>Email</th><th>Member ID</th><th>Books Issued</th><th>Action</th></tr></thead>
+          <tbody id="memberTable"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <div class="modal hidden" id="modal">
+    <div class="modal-card">
+      <button class="close" id="closeModal">&times;</button>
+      <h2 id="modalTitle">Add Book</h2>
+      <form id="modalForm"></form>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
