@@ -1,0 +1,6 @@
+Options -Indexes
+DirectoryIndex index.php
+
+<FilesMatch "^(\.env|composer\.json|composer\.lock)$">
+    Require all denied
+</FilesMatch>
