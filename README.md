@@ -1,24 +1,43 @@
 # Library Management System
 
-A basic responsive Library Management System built with HTML, CSS and JavaScript.
+A full-stack Library Management System built with **PHP, MySQL, HTML, CSS and JavaScript**.
 
 ## Features
-
-- Dashboard statistics for total, available and issued books
-- Add and delete books
-- Search books by title, author or ISBN
-- Filter books by availability
+- Admin login and session authentication
+- Dashboard with live statistics
+- Add, edit and delete books
+- Add, edit and delete members
 - Issue and return books
-- Add and delete library members
-- Responsive interface
-- Browser localStorage persistence
+- Automatic due dates and fine calculation
+- Transaction history
+- Search and status filters
+- MySQL database with relational tables
+- Prepared statements and password hashing
+- Responsive admin interface
 
-## Run
+## Requirements
+- XAMPP (Apache + MySQL)
+- PHP 8.0+
+- MySQL 5.7+ / MariaDB
 
-Open `index.html` in a modern web browser. No server or database is required for this basic version.
+## Setup
+1. Copy the project into `xampp/htdocs/library-management-system`.
+2. Start Apache and MySQL from XAMPP.
+3. Open phpMyAdmin and import `database/library_management.sql`.
+4. Check database settings in `config/database.php`.
+5. Open `http://localhost/library-management-system/`.
+6. Default admin login: `admin@library.com` / `admin123`.
 
-## Project Structure
+## Project structure
+- `index.php` - login and dashboard entry
+- `books.php` - book CRUD
+- `members.php` - member CRUD
+- `transactions.php` - issue, return and transaction history
+- `config/database.php` - PDO database connection
+- `includes/auth.php` - authentication helpers
+- `includes/header.php` / `footer.php` - shared layout
+- `assets/style.css` - responsive styling
+- `assets/app.js` - client-side interactions
+- `database/library_management.sql` - database schema and seed data
 
-- `index.html` — application interface
-- `style.css` — responsive styling
-- `script.js` — application logic and localStorage data handling
+> GitHub Pages cannot run PHP/MySQL. Use XAMPP locally or PHP-compatible hosting for the backend.
