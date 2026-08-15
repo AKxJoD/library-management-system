@@ -1,0 +1,1 @@
+const SUPABASE_URL='https://ooeqbethmzhljnegboec.supabase.co'; const SUPABASE_KEY='sb_publishable_DTVteCfZ8B9oTqE03I85LA_fNyLeRaE';
