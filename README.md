@@ -11,7 +11,7 @@ A full-stack Library Management System built with **PHP, MySQL, HTML, CSS and Ja
 - Automatic due dates and fine calculation
 - Transaction history
 - Search and status filters
-- MySQL database with relational tables
+- MySQL relational database
 - Prepared statements and password hashing
 - Responsive admin interface
 
@@ -28,16 +28,16 @@ A full-stack Library Management System built with **PHP, MySQL, HTML, CSS and Ja
 5. Open `http://localhost/library-management-system/`.
 6. Default admin login: `admin@library.com` / `admin123`.
 
-## Project structure
+## Structure
 - `index.php` - login and dashboard entry
 - `books.php` - book CRUD
 - `members.php` - member CRUD
-- `transactions.php` - issue, return and transaction history
+- `transactions.php` - issue, return and history
 - `config/database.php` - PDO database connection
 - `includes/auth.php` - authentication helpers
 - `includes/header.php` / `footer.php` - shared layout
 - `assets/style.css` - responsive styling
 - `assets/app.js` - client-side interactions
-- `database/library_management.sql` - database schema and seed data
+- `database/library_management.sql` - schema and seed data
 
 > GitHub Pages cannot run PHP/MySQL. Use XAMPP locally or PHP-compatible hosting for the backend.
